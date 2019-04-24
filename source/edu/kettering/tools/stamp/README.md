@@ -5,6 +5,4 @@ This tool will be designed to take in a binary image and allow the user to stamp
 
 ---
 
-Developer: Jeremy Maxey-Vesperman [maxe2470@kettering.edu][developer_email]
-
-	[developer_email]: mailto:maxe2470@kettering.edu
+Developer: Jeremy Maxey-Vesperman [maxe2470@kettering.edu](mailto:maxe2470@kettering.edu)
