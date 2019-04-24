@@ -1,0 +1,1 @@
+Create packages for each tool in this directory. Use edu.kettering.<tool_name> as the naming convention.
