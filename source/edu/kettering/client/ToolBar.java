@@ -1,5 +1,7 @@
 package edu.kettering.client;
 
+import edu.kettering.tools.stamp.StampButton;
+
 import javax.swing.*;
 
 public class ToolBar extends JPanel {
@@ -28,12 +30,19 @@ public class ToolBar extends JPanel {
         b1 = makeNullButton("Red", "makeRed", "Tool Tip");
         b2 = makeNullButton("Green", "makeGreen", "Tool Tip");
         b3 = makeNullButton("Blue", "makeBlue", "Tool Tip");
+
+        JButton b4 = new StampButton();
+
         b1.addActionListener(bar);
         b2.addActionListener(bar);
         b3.addActionListener(bar);
+
         this.add(b1);
         this.add(b2);
         this.add(b3);
+
+        this.add(b4);
+
         jToolBar.add(this);
     }
     

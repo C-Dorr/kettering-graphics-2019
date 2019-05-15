@@ -7,15 +7,11 @@ import javax.swing.*;
 import java.util.Queue;
 
 public class DigitalCanvas extends JPanel implements ActionListener {
-    
-    private Timer timer;
     private ToolBar menuBar;
     private ToolBar moduleBar;
    
     public DigitalCanvas(Client parent) {
         setFocusable(true);
-        timer = new Timer(100, this);
-        timer.start();
     
         initToolBars(parent);
         addKeyListener(new KeyboardActions(this));
@@ -48,6 +44,9 @@ public class DigitalCanvas extends JPanel implements ActionListener {
                 break;
             case "fakeAction":
                 this.setBackground(flipColors());
+                break;
+            case "PickStamp":
+
                 break;
         }
     }

@@ -25,14 +25,7 @@ public class Client extends JFrame {
     }
 
     public static void main(String[] args) {
-        
-        SwingUtilities.invokeLater(new Runnable() {
-            
-            @Override
-            public void run() {
-                Client client = new Client();
-                client.setVisible(true);
-            }
-        });
+        Client client = new Client();
+        client.setVisible(true);
     }
 }
