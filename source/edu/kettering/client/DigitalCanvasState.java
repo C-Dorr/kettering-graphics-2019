@@ -1,6 +1,6 @@
 /*
 *   Class name:     DigitalCanvasState
-*   Contributor(s): Jeremy Maxey-Vesperman
+*   Contributor(s): Jeremy Maxey-Vesperman, Christopher Dorr, Zachary Goldasich
 *   Modified:       May 15th, 2019
 *   Package:        edu.kettering.client
 *   Purpose:        Container for relevant state information of the canvas.
@@ -60,7 +60,12 @@ public class DigitalCanvasState {
     }
 
     // Instantiate canvas state with specified canvas and drawing colors
-    public DigitalCanvasState(Dimension canvasSize, int bufImgColorSpace, Color canvasColor, Color drawColor) {
+    public DigitalCanvasState(
+            Dimension canvasSize,
+            int bufImgColorSpace,
+            Color canvasColor,
+            Color drawColor
+    ) {
         this.initCanvasImg(canvasSize, bufImgColorSpace, canvasColor);
         this.setDrawColor(drawColor);
         this.setSelectedTool(NO_TOOL_SELECTED);
@@ -117,7 +122,9 @@ public class DigitalCanvasState {
         );
         this.canvasImg.setData(newCanvasImg.getRaster());
     }
-    public void updateDrawColor(Color newDrawColor) { this.drawColor = new Color(newDrawColor.getRGB()); }
+    public void updateDrawColor(Color newDrawColor) {
+        this.drawColor = new Color(newDrawColor.getRGB());
+    }
 
     /* PACKAGE-LEVEL SETTERS */
     // Restrict control of selected tool and mouse coordinates to the Client package
