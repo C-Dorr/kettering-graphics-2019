@@ -18,7 +18,6 @@ public abstract class Tool implements ToolInterface {
     // Default colors for button states
     protected static final Color COLOR_BUTTON_INACTIVE = new Color(175,175,175);
     protected static final Color COLOR_BUTTON_ACTIVE = new Color(0, 255, 0);
-    protected static final Color COLOR_BUTTON_NO_STAMP = new Color(255, 0, 0 );
 
     // Every tool must implement a button to be added to one of the button panels
     protected JButton toolButton;
