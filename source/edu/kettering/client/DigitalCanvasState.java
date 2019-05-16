@@ -1,7 +1,7 @@
 /*
 *   Class name:     DigitalCanvasState
 *   Contributor(s): Jeremy Maxey-Vesperman, Christopher Dorr, Zachary Goldasich
-*   Modified:       May 15th, 2019
+*   Modified:       May 16th, 2019
 *   Package:        edu.kettering.client
 *   Purpose:        Container for relevant state information of the canvas.
 *                   Allows interfacing with canvas data from within plugin tools.
@@ -43,10 +43,11 @@ public class DigitalCanvasState {
     private Color drawColor;
     private int selectedTool;
     private Point lastMouseCoords;
+    private int lastKeyCode;
 
     /* CONSTRUCTORS */
     // Instantiate canvas state with default initial canvas color
-    public DigitalCanvasState(Dimension canvasSize, int bufImgColorSpace) {
+    DigitalCanvasState(Dimension canvasSize, int bufImgColorSpace) {
         this.initCanvasImg(canvasSize, bufImgColorSpace, DEFAULT_CANVAS_COLOR);
         this.setDrawColor(DEFAULT_DRAW_COLOR);
         this.setSelectedTool(NO_TOOL_SELECTED);
@@ -109,8 +110,8 @@ public class DigitalCanvasState {
         return returnImg;
     }
     public Color getDrawColor() { return new Color(this.drawColor.getRGB()); }
-    public int getSelectedTool() { return this.selectedTool; }
     public Point getLastMouseCoords() { return new Point(this.lastMouseCoords); }
+    public int getLastKeyCode() { return this.lastKeyCode; }
 
     /* PUBLICLY-ACCESSIBLE SETTERS */
     // Set through copies of objects to enforce usage of setters and protect instance variables
@@ -126,12 +127,16 @@ public class DigitalCanvasState {
         this.drawColor = new Color(newDrawColor.getRGB());
     }
 
+    /* PACKAGE-LEVEL GETTERS */
+    int getSelectedTool() { return this.selectedTool; }
+
     /* PACKAGE-LEVEL SETTERS */
     // Restrict control of selected tool and mouse coordinates to the Client package
     void setSelectedTool(int currTool) { this.selectedTool = currTool; }
     void updateMouseCoords(Point currMouseCoord) {
         this.lastMouseCoords = new Point(currMouseCoord);
     }
+    void updateKeyCode(int currKeyCode) { this.lastKeyCode = currKeyCode; }
 
     /* PRIVATE SETTERS */
     // Trusting this class to handle objects in a safe manner

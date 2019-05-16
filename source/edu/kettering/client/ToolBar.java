@@ -1,51 +1,43 @@
 package edu.kettering.client;
 
-import edu.kettering.tools.stamp.StampButton;
-
 import javax.swing.*;
+import java.util.LinkedList;
+import java.util.ListIterator;
 
-public class ToolBar extends JPanel {
-    public String name;
-    public int orientation;
+class ToolBar extends JPanel {
+    private String name;
+    private int orientation;
     private JToolBar jToolBar;
     
-    public ToolBar(String name, int orientation) {
+    ToolBar(String name, int orientation) {
         this.name = name;
         this.orientation = orientation;
         this.setLayout(new BoxLayout(this, orientation));
-        jToolBar = new JToolBar(name + "_tb", orientation);
-        jToolBar.setFloatable(false);
+        this.jToolBar = new JToolBar(name + "_tb", orientation);
+        this.jToolBar.setFloatable(false);
     }
-    
-    public void addMenuButtons(DigitalCanvas bar) {
+
+    void addMenuButtons(DigitalCanvas bar) {
         JButton button = makeNullButton("Flip Colors", "fakeAction", "Press this to use nothing.");
         button.addActionListener(bar);
         this.add(button);
-        jToolBar.add(this);
+        this.jToolBar.add(this);
     }
-    
-    //TODO: Abstract addition of buttons to module bar for easy addition of new modules
-    public void addModuleButtons(DigitalCanvas bar) {
-        JButton b1, b2, b3;
-        b1 = makeNullButton("Red", "makeRed", "Tool Tip");
-        b2 = makeNullButton("Green", "makeGreen", "Tool Tip");
-        b3 = makeNullButton("Blue", "makeBlue", "Tool Tip");
 
-        JButton b4 = new StampButton();
+    void addModuleButtons(DigitalCanvas canvas, LinkedList<JButton> buttons) {
+        // Get iterator for linked list of buttons
+        ListIterator<JButton> buttonIter = buttons.listIterator();
 
-        b1.addActionListener(bar);
-        b2.addActionListener(bar);
-        b3.addActionListener(bar);
+        // Iteratively add all the tool buttons to the toolbar
+        for(JButton  button: buttons) {
+            button = buttonIter.next(); // get next button
+            button.addActionListener(canvas); // register canvas as listener for button
+            this.add(button); // add button to toolbar
+        }
 
-        this.add(b1);
-        this.add(b2);
-        this.add(b3);
-
-        this.add(b4);
-
-        jToolBar.add(this);
+        this.jToolBar.add(this);
     }
-    
+
     private JButton makeNullButton(String name, String actionCommand, String toolTip) {
         JButton button = new JButton();
         button.setText(name);
