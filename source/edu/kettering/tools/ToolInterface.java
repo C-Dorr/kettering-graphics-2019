@@ -30,6 +30,12 @@ public interface ToolInterface {
     void mouseButton2ReleasedHandler(DigitalCanvasState dcs);
     void mouseButton3ReleasedHandler(DigitalCanvasState dcs);
 
+    // Handler function for when particular mouse button is pressed, mouse is moved, and tool is active
+    void mouseButton1DraggedHandler(DigitalCanvasState dcs);
+    void mouseButton2DraggedHandler(DigitalCanvasState dcs);
+    void mouseButton3DraggedHandler(DigitalCanvasState dcs);
+
+
     // Handler function for tool being deselected
     void deselectTool();
 

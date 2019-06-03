@@ -35,6 +35,11 @@ public abstract class Tool implements ToolInterface {
     public void mouseButton2ReleasedHandler(DigitalCanvasState dcs) {}
     public void mouseButton3ReleasedHandler(DigitalCanvasState dcs) {}
 
+    // Called by canvas when specific mouse button is pressed, mouse moved, and tool is active
+    public void mouseButton1DraggedHandler(DigitalCanvasState dcs) {}
+    public void mouseButton2DraggedHandler(DigitalCanvasState dcs) {}
+    public void mouseButton3DraggedHandler(DigitalCanvasState dcs) {}
+
     // Called by canvas when the tool's button is pressed
     public void buttonActionHandler(DigitalCanvasState dcs) { this.getToolButton().setBackground(COLOR_BUTTON_ACTIVE); }
 
