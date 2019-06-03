@@ -1,6 +1,7 @@
 package edu.kettering.client;
 
 import edu.kettering.tools.Tool;
+import edu.kettering.tools.kaleidoscope.Kaleidoscope;
 import edu.kettering.tools.stamp.Stamp;
 
 import java.awt.*;
@@ -16,9 +17,9 @@ public class DigitalCanvas extends JPanel implements ActionListener {
 
     // Add your tool here. Buttons will appear in the order that the tools are listed.
     private Tool [] tools = {
-            new Stamp(),    // First tool button in list
-                            // Second tool button in list
-                            // ...
+            new Stamp(),        // First tool button in list
+            new Kaleidoscope(), // Second tool button in list
+                                // ...
     };
 
     DigitalCanvas(Client parent) {
@@ -30,6 +31,7 @@ public class DigitalCanvas extends JPanel implements ActionListener {
 
         this.addKeyListener(new KeyboardActions(this));
         this.addMouseListener(new MouseActions(this));
+        this.addMouseMotionListener(new MouseMotionActions(this));
     
         this.setBackground(Color.white);
     }
@@ -166,5 +168,40 @@ public class DigitalCanvas extends JPanel implements ActionListener {
 
             this.canvas.repaint();
         }
+    }
+
+    class MouseMotionActions implements MouseMotionListener {
+        DigitalCanvas canvas;
+
+        MouseMotionActions(DigitalCanvas canvas) {
+            this.canvas = canvas;
+        }
+
+        @Override
+        public void mouseDragged(MouseEvent me) {
+            this.canvas.DCS.updateMouseCoords(me.getPoint()); // update mouse coordinate
+            int toolID = this.canvas.DCS.getSelectedTool(); // get current tool id
+
+            try {
+                Tool currTool = this.canvas.tools[toolID]; // attempt to access tool at this id
+
+                if (SwingUtilities.isLeftMouseButton(me)) {  // dragging on left button
+                    currTool.mouseButton1DraggedHandler(this.canvas.DCS);
+                } else if (SwingUtilities.isRightMouseButton(me)) { // dragging on right button
+                    currTool.mouseButton2DraggedHandler(this.canvas.DCS);
+                } else if (SwingUtilities.isMiddleMouseButton(me)) { // dragging on middle button
+                    currTool.mouseButton3DraggedHandler(this.canvas.DCS);
+                }
+            } catch (ArrayIndexOutOfBoundsException e) { // non-existent tool id
+                System.out.println("Invalid tool currently selected. Ignoring mouse dragged input.");
+            }
+
+            this.canvas.repaint();
+
+            this.canvas.requestFocusInWindow();
+        }
+
+        @Override
+        public void mouseMoved(MouseEvent e) {}
     }
 }
