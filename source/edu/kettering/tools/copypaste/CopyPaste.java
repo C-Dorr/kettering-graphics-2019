@@ -30,7 +30,7 @@ public class CopyPaste extends edu.kettering.tools.Tool{
     public void keyPressedHandler(DigitalCanvasState dcs) {
     	BufferedImage canvasImg = dcs.getCanvasImg();
     	haveImage = false;
-    	canvasImg.setData(copied);
+    	if (copied != null) { canvasImg.setData(copied); }
     	dcs.updateCanvasImg(canvasImg);
     }
 
