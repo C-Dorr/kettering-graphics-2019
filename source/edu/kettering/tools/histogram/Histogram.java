@@ -55,6 +55,7 @@ public class Histogram extends edu.kettering.tools.Tool {
 					newArray[1]++;
 					bin.set(i, newArray);
 					match = true;
+					break;
 				}
 			}
 			if (!match) {
