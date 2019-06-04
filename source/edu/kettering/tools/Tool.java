@@ -1,7 +1,7 @@
 /*
  *   Class name:        Tool (Abstract)
  *   Contributor(s):    Jeremy Maxey-Vesperman, Christopher Dorr, Zachary Goldasich
- *   Modified:          May 16th, 2019
+ *   Modified:          June 4th, 2019
  *   Package:           edu.kettering.tools
  *   Purpose:           Abstract class to inherit from when implementing a tool.
  *                      Includes default implementation of some of the interface.
@@ -41,10 +41,13 @@ public abstract class Tool implements ToolInterface {
     public void mouseButton3DraggedHandler(DigitalCanvasState dcs) {}
 
     // Called by canvas when the tool's button is pressed
-    public void buttonActionHandler(DigitalCanvasState dcs) { this.getToolButton().setBackground(COLOR_BUTTON_ACTIVE); }
+    public void buttonActionHandler(DigitalCanvasState dcs) { this.toolButton.setBackground(COLOR_BUTTON_ACTIVE); }
 
     // Called by canvas when the tool is deselected
-    public void deselectTool() { this.getToolButton().setBackground(COLOR_BUTTON_INACTIVE); }
+    public void deselectTool(DigitalCanvasState dcs) { this.toolButton.setBackground(COLOR_BUTTON_INACTIVE); }
+
+    // Repaints the DigitalCanvas
+    public void repaintCanvas() { this.toolButton.getParent().getParent().repaint(); }
 
     // Returns tool button reference to caller
     public JButton getToolButton() { return this.toolButton; }

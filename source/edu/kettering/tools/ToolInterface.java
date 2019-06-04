@@ -37,7 +37,10 @@ public interface ToolInterface {
 
 
     // Handler function for tool being deselected
-    void deselectTool();
+    void deselectTool(DigitalCanvasState dcs);
+
+    // Call to repaint the drawing canvas
+    void repaintCanvas();
 
     // Returns reference to the tool's button
     JButton getToolButton();
