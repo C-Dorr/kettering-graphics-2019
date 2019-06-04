@@ -1,6 +1,7 @@
 package edu.kettering.client;
 
 import edu.kettering.tools.Tool;
+import edu.kettering.tools.filter.Filter;
 import edu.kettering.tools.kaleidoscope.Kaleidoscope;
 import edu.kettering.tools.stamp.Stamp;
 
@@ -19,6 +20,7 @@ public class DigitalCanvas extends JPanel implements ActionListener {
     private Tool [] tools = {
             new Stamp(),        // First tool button in list
             new Kaleidoscope(), // Second tool button in list
+            new Filter(),
                                 // ...
     };
 
