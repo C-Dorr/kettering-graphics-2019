@@ -41,11 +41,11 @@ public class Filter extends Tool {
 	}
 	
 	void setFilter(String name) {
-		if (name.equals("sharpen")) {
+		if (name.equals("Sharpen")) {
 			 activeKernel = kernels[0];
-		} else if(name.equals("edge")) {
+		} else if(name.equals("Edge")) {
 			 activeKernel = kernels[1];
-		} else if(name.equals("sepia")) {
+		} else if(name.equals("Sepia")) {
 			 activeKernel = kernels[2];
 		} else {
 			 activeKernel = kernels[3];

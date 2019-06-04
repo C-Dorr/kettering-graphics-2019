@@ -11,7 +11,7 @@ import java.awt.event.ItemListener;
 
 // ToDo - Comments
 public class FilterSelectorWindow extends JFrame{
-	private static final String[] filters = {"sharpen", "edge", "sepia", "emboss"};
+	private static final String[] filters = {"Sharpen", "Edge", "Sepia", "Emboss"};
 
 	private JComboBox<String> box;
 	private JButton applyButton;
