@@ -7,6 +7,7 @@ import edu.kettering.tools.copypaste.CopyPaste;
 import edu.kettering.tools.filter.Filter;
 import edu.kettering.tools.kaleidoscope.Kaleidoscope;
 import edu.kettering.tools.stamp.Stamp;
+import edu.kettering.tools.histogram.Histogram;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -43,6 +44,7 @@ public class DigitalCanvas extends JPanel implements ActionListener {
             new Kaleidoscope(), // Second tool button in list
             new Filter(),
             new CopyPaste(),
+            new Histogram(),
                                 // ...
     };
 
