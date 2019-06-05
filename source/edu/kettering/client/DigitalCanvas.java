@@ -10,6 +10,8 @@ import edu.kettering.tools.stamp.Stamp;
 import edu.kettering.tools.histogram.Histogram;
 import edu.kettering.tools.colorPicker.ColorSelector;
 import edu.kettering.tools.eyeDropper.EyeDropper;
+import edu.kettering.tools.eraser.Eraser;
+import edu.kettering.tools.caligraphy.Caligraphy;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -42,13 +44,15 @@ public class DigitalCanvas extends JPanel implements ActionListener {
 
     // Add your tool here. Buttons will appear in the order that the tools are listed.
     private Tool [] tools = {
-            new Stamp(),        // First tool button in list
-            new Kaleidoscope(), // Second tool button in list
+		    new Eraser(),        // First tool button in list
+            new Stamp(), 		 // Second tool button in list
+            new Kaleidoscope(),
             new Filter(),
             new CopyPaste(),
             new Histogram(),
             new ColorSelector(),
             new EyeDropper(),
+			new Caligraphy(),
                                 // ...
     };
 
