@@ -41,6 +41,7 @@ public class DigitalCanvasState {
     /* INSTANCE VARIABLES */
     private BufferedImage canvasImg;
     private Color drawColor;
+    private Color canvasColor;
     private int selectedTool;
     private Point lastMouseCoords;
     private int lastKeyCode;
@@ -50,6 +51,7 @@ public class DigitalCanvasState {
     DigitalCanvasState(Dimension canvasSize, int bufImgColorSpace) {
         this.initCanvasImg(canvasSize, bufImgColorSpace, DEFAULT_CANVAS_COLOR);
         this.setDrawColor(DEFAULT_DRAW_COLOR);
+        this.setCanvasColor(DEFAULT_CANVAS_COLOR);
         this.setSelectedTool(NO_TOOL_SELECTED);
     }
 
@@ -57,6 +59,7 @@ public class DigitalCanvasState {
     public DigitalCanvasState(Dimension canvasSize, int bufImgColorSpace, Color drawColor) {
         this.initCanvasImg(canvasSize, bufImgColorSpace, DEFAULT_CANVAS_COLOR);
         this.setDrawColor(drawColor);
+        this.setCanvasColor(DEFAULT_CANVAS_COLOR);
         this.setSelectedTool(NO_TOOL_SELECTED);
     }
 
@@ -68,6 +71,7 @@ public class DigitalCanvasState {
             Color drawColor
     ) {
         this.initCanvasImg(canvasSize, bufImgColorSpace, canvasColor);
+        this.setCanvasColor(canvasColor);
         this.setDrawColor(drawColor);
         this.setSelectedTool(NO_TOOL_SELECTED);
     }
@@ -81,6 +85,7 @@ public class DigitalCanvasState {
                 this.canvasImg.setRGB(x, y, wipeColor.getRGB());
             }
         }
+        this.setCanvasColor(wipeColor);
     }
 
     /* PRIVATE HELPER FUNCTIONS */
@@ -110,6 +115,7 @@ public class DigitalCanvasState {
         return returnImg;
     }
     public Color getDrawColor() { return new Color(this.drawColor.getRGB()); }
+    public Color getCanvasColor() { return new Color(this.canvasColor.getRGB());}
     public Point getLastMouseCoords() { return new Point(this.lastMouseCoords); }
     public int getLastKeyCode() { return this.lastKeyCode; }
 
@@ -142,4 +148,5 @@ public class DigitalCanvasState {
     // Trusting this class to handle objects in a safe manner
     private void setCanvasImg(BufferedImage newCanvasImg) { this.canvasImg = newCanvasImg; }
     private void setDrawColor(Color newDrawColor) { this.drawColor = newDrawColor; }
+    private void setCanvasColor(Color newCanvasColor) {this.canvasColor = newCanvasColor;}
 }
