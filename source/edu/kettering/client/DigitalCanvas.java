@@ -9,6 +9,7 @@ import edu.kettering.tools.kaleidoscope.Kaleidoscope;
 import edu.kettering.tools.stamp.Stamp;
 import edu.kettering.tools.histogram.Histogram;
 import edu.kettering.tools.colorPicker.ColorSelector;
+import edu.kettering.tools.eyeDropper.EyeDropper;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -46,7 +47,8 @@ public class DigitalCanvas extends JPanel implements ActionListener {
             new Filter(),
             new CopyPaste(),
             new Histogram(),
-            new ColorSelector()
+            new ColorSelector(),
+            new EyeDropper(),
                                 // ...
     };
 
