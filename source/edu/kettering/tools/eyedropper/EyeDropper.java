@@ -1,4 +1,4 @@
-package edu.kettering.tools.eyeDropper;
+package edu.kettering.tools.eyedropper;
 
 /*
     Aaron Howell

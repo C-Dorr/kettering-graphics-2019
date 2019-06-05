@@ -1,4 +1,4 @@
-package edu.kettering.tools.colorPicker;
+package edu.kettering.tools.colorpicker;
 
 import edu.kettering.client.DigitalCanvasState;
 

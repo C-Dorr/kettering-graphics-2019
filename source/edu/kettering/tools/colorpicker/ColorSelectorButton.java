@@ -1,9 +1,7 @@
-package edu.kettering.tools.colorPicker;
+package edu.kettering.tools.colorpicker;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /*
     Aaron Howell
