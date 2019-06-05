@@ -29,7 +29,7 @@ public class DigitalCanvasState {
             DEFAULT_CANVAS_G,
             DEFAULT_CANVAS_B
     );
-    private static final Color DEFAULT_DRAW_COLOR = new Color(
+    public static final Color DEFAULT_DRAW_COLOR = new Color(
             DEFAULT_DRAW_R,
             DEFAULT_DRAW_G,
             DEFAULT_DRAW_B
