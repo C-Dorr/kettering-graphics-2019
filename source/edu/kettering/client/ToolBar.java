@@ -1,4 +1,10 @@
-// ToDo - Heading
+/*
+ *   Class name:     DigitalCanvasState
+ *   Contributor(s): Christopher Dorr, Jeremy Maxey-Vesperman
+ *   Modified:       June 5th, 2019
+ *   Package:        edu.kettering.client
+ *   Purpose:        Button containers. Handles instantiation of menu/tool buttons.
+ * */
 
 package edu.kettering.client;
 

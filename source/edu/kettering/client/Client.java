@@ -1,3 +1,11 @@
+/*
+ *   Class name:     DigitalCanvasState
+ *   Contributor(s): Christopher Dorr
+ *   Modified:       June 5th, 2019
+ *   Package:        edu.kettering.client
+ *   Purpose:        Main paint program class. Generates the main frame.
+ * */
+
 package edu.kettering.client;
 
 import java.awt.*;
