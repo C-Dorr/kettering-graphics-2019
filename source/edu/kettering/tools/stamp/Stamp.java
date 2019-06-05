@@ -1,7 +1,7 @@
 /*
  *   Class name:        Stamp
  *   Contributor(s):    Jeremy Maxey-Vesperman
- *   Modified:          May 16th, 2019
+ *   Modified:          June 4th, 2019
  *   Package:           edu.kettering.tools.stamp
  *   Purpose:           Class for stamp tool. Implements Tool interface.
  *                      Provides functionality for importing, converting to B/W, and drawing an
@@ -47,7 +47,7 @@ public class Stamp
 
     private void selectStamp() {
         //Create a file chooser
-        final JFileChooser stampChooser = new JFileChooser();
+        JFileChooser stampChooser = new JFileChooser();
         FileNameExtensionFilter imageFilter = new FileNameExtensionFilter(
                 STAMP_CHOOSER_EXTENSION_DESCRIPTION,
                 STAMP_CHOOSER_EXTENSIONS
@@ -56,18 +56,19 @@ public class Stamp
         stampChooser.setDialogTitle(TITLE_STAMP_CHOOSER);
 
         //In response to a button click:
-        int returnVal = stampChooser.showOpenDialog(null);
+        int returnVal = stampChooser.showOpenDialog(toolButton.getParent().getParent());
 
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             File file = stampChooser.getSelectedFile();
             try {
                 BufferedImage stamp = ImageIO.read(file);
+
                 stamp = this.rgbToBW(stamp);
                 stamp = this.trimStamp(stamp);
                 this.setStamp(stamp);
             } catch (Exception e) {
                 System.out.println(MSG_ERROR_IMAGE_IO);
-                JOptionPane.showMessageDialog(null, MSG_DIALOG_IMAGE_IO, TITLE_DIALOG_STAMP_WARNING, JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(toolButton.getParent().getParent(), MSG_DIALOG_IMAGE_IO, TITLE_DIALOG_STAMP_WARNING, JOptionPane.ERROR_MESSAGE);
                 this.setStamp(null);
             }
         }
@@ -171,24 +172,8 @@ public class Stamp
             this.drawStamp(canvasImg, drawColor, mousePos);
         } catch (NoStampSelectedException e) {
             System.out.println(MSG_ERROR_NO_STAMP);
-            JOptionPane.showMessageDialog(null, MSG_DIALOG_NO_STAMP, TITLE_DIALOG_STAMP_WARNING, JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(toolButton.getParent().getParent(), MSG_DIALOG_NO_STAMP, TITLE_DIALOG_STAMP_WARNING, JOptionPane.WARNING_MESSAGE);
         }
         dcs.updateCanvasImg(canvasImg);
-
-        /*Random rand = new Random();
-        int r  = rand.nextInt(256);
-        int g  = rand.nextInt(256);
-        int b  = rand.nextInt(256);
-
-        Color newColor = new Color(r, g, b);
-
-        dcs.updateDrawColor(newColor);
-
-        File outputFile = new File("imageOut.png");
-        try {
-            ImageIO.write(canvasImg, "png", outputFile);
-        } catch (IOException e) {
-            System.out.println("Unable to write image");
-        }*/
     }
 }
