@@ -1,4 +1,11 @@
-// ToDo - Heading
+
+/*
+ *   Class name:     DigitalCanvasState
+ *   Contributor(s): Christopher Dorr, Jeremy Maxey-Vesperman
+ *   Modified:       June 5th, 2019
+ *   Package:        edu.kettering.client
+ *   Purpose:        Canvas container. Manages the drawable area and tool/menu buttons.
+ * */
 
 package edu.kettering.client;
 
@@ -8,6 +15,12 @@ import edu.kettering.tools.filter.Filter;
 import edu.kettering.tools.kaleidoscope.Kaleidoscope;
 import edu.kettering.tools.stamp.Stamp;
 import edu.kettering.tools.histogram.Histogram;
+import edu.kettering.tools.colorpicker.ColorSelector;
+import edu.kettering.tools.eyedropper.EyeDropper;
+import edu.kettering.tools.eraser.Eraser;
+import edu.kettering.tools.caligraphy.Caligraphy;
+import edu.kettering.tools.texttool.TextTool;
+import edu.kettering.tools.paint.Paint;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -40,12 +53,17 @@ public class DigitalCanvas extends JPanel implements ActionListener {
 
     // Add your tool here. Buttons will appear in the order that the tools are listed.
     private Tool [] tools = {
-            new Stamp(),        // First tool button in list
-            new Kaleidoscope(), // Second tool button in list
-            new Filter(),
+            new Eraser(),
             new CopyPaste(),
+            new ColorSelector(),
+            new EyeDropper(),
+            new Caligraphy(),
+            new TextTool(),
+            new Paint(),
+            new Kaleidoscope(),
+            new Stamp(),
+            new Filter(),
             new Histogram(),
-                                // ...
     };
 
     // Array of button action commands to use while generating buttons for menubar
