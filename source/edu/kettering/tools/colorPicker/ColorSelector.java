@@ -3,10 +3,7 @@ package edu.kettering.tools.colorPicker;
 import edu.kettering.client.DigitalCanvasState;
 
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 /*
     Aaron Howell
     Computer Graphics
@@ -17,20 +14,25 @@ import java.awt.event.ActionListener;
 public class ColorSelector extends edu.kettering.tools.Tool{
 
     private Color selectedColor;
-    private Color[] colorHistory;
-
 
     public ColorSelector() {
         toolButton = new ColorSelectorButton();
-        toolButton.setText("Color: ");
-       //toolButton.setBackground(COLOR_BUTTON_INACTIVE);
-        setSelectedColor(Color.black);
+        toolButton.setText("Color");
+
+        setSelectedColor(DigitalCanvasState.DEFAULT_DRAW_COLOR);
     }
 
     @Override
     public void buttonActionHandler(DigitalCanvasState dcs) {
+        setSelectedColor(dcs.getDrawColor());
+
         Color newColor = JColorChooser.showDialog(null, "Choose a color", selectedColor);
+
+        // Check that color was selected before proceeding
+        if (newColor == null) { return; }
+
         setSelectedColor(newColor);
+
         dcs.updateDrawColor(newColor);
     }
 
@@ -38,9 +40,22 @@ public class ColorSelector extends edu.kettering.tools.Tool{
         return selectedColor;
     }
 
-    public void setSelectedColor(Color newColor) {
+    private void setSelectedColor(Color newColor) {
         selectedColor = newColor;
+        setButtonTextColor(newColor);
         toolButton.setBackground(newColor);
+    }
+
+    // Set text color of button in contrast to background color
+    private void setButtonTextColor(Color backColor) {
+        int r = backColor.getRed();
+        int g = backColor.getGreen();
+        int b = backColor.getBlue();
+
+        // Add RGB components and see if its greater than 50% White
+        Color textColor = ((r + g + b) > 382) ? Color.BLACK : Color.WHITE;
+
+        toolButton.setForeground(textColor);
     }
 
     @Override

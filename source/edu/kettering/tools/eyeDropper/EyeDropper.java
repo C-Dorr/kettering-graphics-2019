@@ -22,6 +22,18 @@ public class EyeDropper extends edu.kettering.tools.Tool{
         toolButton.setBackground(COLOR_BUTTON_INACTIVE);
     }
 
+    // Set text color of button in contrast to background color
+    private void setButtonTextColor(Color backColor) {
+        int r = backColor.getRed();
+        int g = backColor.getGreen();
+        int b = backColor.getBlue();
+
+        // Add RGB components and see if its greater than 50% White
+        Color textColor = ((r + g + b) > 382) ? Color.BLACK : Color.WHITE;
+
+        toolButton.setForeground(textColor);
+    }
+
     @Override
     public void buttonActionHandler(DigitalCanvasState dcs) { this.getToolButton().setBackground(COLOR_BUTTON_ACTIVE); }
 
@@ -36,6 +48,7 @@ public class EyeDropper extends edu.kettering.tools.Tool{
         BufferedImage img = dcs.getCanvasImg();
 
         Color color = new Color(img.getRGB(x,y));
+        setButtonTextColor(color);
 
         dcs.updateDrawColor(color);
         toolButton.setBackground(color);
@@ -65,5 +78,9 @@ public class EyeDropper extends edu.kettering.tools.Tool{
         dcs.updateCanvasImg(img);
     }
 
-
+    @Override
+    public void deselectTool(DigitalCanvasState dcs) {
+        toolButton.setBackground(COLOR_BUTTON_INACTIVE);
+        toolButton.setForeground(Color.BLACK);
+    }
 }
