@@ -12,6 +12,7 @@ import edu.kettering.tools.colorPicker.ColorSelector;
 import edu.kettering.tools.eyeDropper.EyeDropper;
 import edu.kettering.tools.eraser.Eraser;
 import edu.kettering.tools.caligraphy.Caligraphy;
+import edu.kettering.tools.texttool.TextTool;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -53,6 +54,7 @@ public class DigitalCanvas extends JPanel implements ActionListener {
             new ColorSelector(),
             new EyeDropper(),
 			new Caligraphy(),
+            new TextTool(),
                                 // ...
     };
 
