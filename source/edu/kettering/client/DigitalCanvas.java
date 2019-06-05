@@ -8,7 +8,6 @@ import edu.kettering.tools.filter.Filter;
 import edu.kettering.tools.kaleidoscope.Kaleidoscope;
 import edu.kettering.tools.stamp.Stamp;
 import edu.kettering.tools.histogram.Histogram;
-import edu.kettering.tools.paint.Paint;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -41,9 +40,8 @@ public class DigitalCanvas extends JPanel implements ActionListener {
 
     // Add your tool here. Buttons will appear in the order that the tools are listed.
     private Tool [] tools = {
-            new Paint(),        // First tool button in list
-            new Stamp(),        // Second tool button in list
-            new Kaleidoscope(),
+            new Stamp(),        // First tool button in list
+            new Kaleidoscope(), // Second tool button in list
             new Filter(),
             new CopyPaste(),
             new Histogram(),
